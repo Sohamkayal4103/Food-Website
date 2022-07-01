@@ -4,6 +4,8 @@ import Navbar from './components/Navbar';
 import SearchBar from './components/SearchBar';
 import Cards from './components/Cards';
 import axios from 'axios'
+import {BrowserRouter as Router,Routes,Route,Switch} from 'react-router-dom'
+import Modal from './components/Modal';
 
 function App() {
 
@@ -58,20 +60,20 @@ function App() {
       <div className = "absolute p-8 text-2xl text-gray-600 font-semibold top-3/4 w-full z-[-1]">
         <h1>Top Recipes:</h1>
         <div className=" grid grid-cols-1 md:grid-cols-3 gap-6 ">
-          {recipes.map((recipe)=>{
-            console.log(recipe);
-            return(
-            <Cards 
-              key={recipe.idMeal}
-              id={recipe.idMeal}
-              name={recipe.strMeal}
-              image={recipe.strMealThumb}
-              category={recipe.strCategory}
-              area={recipe.strArea}
-              instructions={recipe.strInstructions}
-              youtube={recipe.strYoutube}
-            />
-          )})}
+        {recipes.map((recipe)=>{
+          console.log(recipe);
+          return(
+          <Cards 
+            key={recipe.idMeal}
+            id={recipe.idMeal}
+            name={recipe.strMeal}
+            image={recipe.strMealThumb}
+            category={recipe.strCategory}
+            area={recipe.strArea}
+            instructions={recipe.strInstructions}
+            youtube={recipe.strYoutube}
+          />
+        )})}
         </div>
       </div>
       
