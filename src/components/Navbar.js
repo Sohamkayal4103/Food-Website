@@ -42,7 +42,7 @@ let Links=[
                   >
                   <a 
                   className="text-gray-800 hover:text-gray-400 duration-500 cursor-pointer"
-                  href={link.link}>{link.name}</a>
+                  href={link.path}>{link.name}</a>
                 </li>
               ))
             }
