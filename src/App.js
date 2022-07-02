@@ -6,6 +6,7 @@ import Cards from './components/Cards';
 import axios from 'axios'
 import {BrowserRouter as Router,Routes,Route,Switch} from 'react-router-dom'
 import Modal from './components/Modal';
+import Footer from './components/Footer';
 
 function App() {
 
@@ -75,8 +76,10 @@ function App() {
           />
         )})}
         </div>
+        <div className="md:mt-40 mt-80">
+          <Footer />
+        </div>
       </div>
-      
     </div>
   );
 }
