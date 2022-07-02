@@ -61,7 +61,7 @@ function App() {
       <div className = "absolute p-8 text-2xl text-gray-600 font-semibold top-3/4 w-full z-[-1]">
         <h1>Top Recipes:</h1>
         <div className=" grid grid-cols-1 md:grid-cols-3 gap-6 ">
-        {recipes.map((recipe)=>{
+        {(recipes != null) ? recipes.map((recipe)=>{
           console.log(recipe);
           return(
           <Cards 
@@ -74,7 +74,17 @@ function App() {
             instructions={recipe.strInstructions}
             youtube={recipe.strYoutube}
           />
-        )})}
+        )}):
+        <div className = "md:-ml-16 grid md:grid-cols-1 md:w-screen grid-cols-1">
+          <div className="flex inset-0 flex justify-center items-center flex-col">
+            <img src="https://i.pinimg.com/736x/8e/83/6f/8e836f537ec522948c28b4970c66fce4.jpg" alt="" className="md:w-1/5"></img>
+            <h1 className="text-center">No Recipes Found</h1>
+          </div>
+          
+        </div>
+        
+
+      }
         </div>
         <div className="md:mt-40 mt-80">
           <Footer />
