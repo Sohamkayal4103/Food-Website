@@ -1,11 +1,8 @@
 import React,{useState,useEffect} from 'react'
 import './App.css';
 import Navbar from './components/Navbar';
-import SearchBar from './components/SearchBar';
 import Cards from './components/Cards';
 import axios from 'axios'
-import {BrowserRouter as Router,Routes,Route,Switch} from 'react-router-dom'
-import Modal from './components/Modal';
 import Footer from './components/Footer';
 
 function App() {
@@ -15,8 +12,6 @@ function App() {
 
   const handleClick = (e) =>{
     e.preventDefault();
-    // setSearch('');
-    console.log(search);
     getResults(search);
   }
 
@@ -24,15 +19,11 @@ function App() {
     try{
       const res = await axios.get(`https://www.themealdb.com/api/json/v1/1/search.php?s=${ingredient}`)
       setRecipes(res.data.meals);
-      // console.log(res.data.meals);
     }
     catch(err){
       console.log(err);
     }
   }
-
-  
-
 
   useEffect(() => {
     getResults(search);
@@ -76,7 +67,7 @@ function App() {
           />
         )}):
         <div className = "md:-ml-16 grid md:grid-cols-1 md:w-screen grid-cols-1">
-          <div className="flex inset-0 flex justify-center items-center flex-col">
+          <div className="flex inset-0 justify-center items-center flex-col">
             <img src="https://i.pinimg.com/736x/8e/83/6f/8e836f537ec522948c28b4970c66fce4.jpg" alt="" className="md:w-1/5"></img>
             <h1 className="text-center">No Recipes Found</h1>
           </div>
