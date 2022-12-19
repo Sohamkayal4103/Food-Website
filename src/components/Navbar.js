@@ -1,25 +1,24 @@
 import React,{useState} from 'react'
+import LoginButton from '../components/LoginButton';
+import LogoutButton from './LogoutButton';
+import { useAuth0 } from "@auth0/auth0-react";
+
 
 const Navbar = () => {
 
-let Links=[
-  {
-    name: 'Home',
-    path: '/'
-  },
-  {
-    name: 'Add a recipe',
-    path: '/add'
-  },
-  {
-    name: 'Login',
-    path: '/login'
-  }
-
-]
+  const { user, isAuthenticated} = useAuth0();
+  let Links=[
+    {
+      name: 'Home',
+      path: '/'
+    },
+    {
+      name: 'Add a recipe',
+      path: '/add'
+    }
+  ]
 
   const [open,setOpen] = useState(false)
-  const toggle = () => setOpen(!open)
 
   return (
     <div className="shadow-md w-full fixed top-0 left-0">
@@ -46,6 +45,25 @@ let Links=[
                 </li>
               ))
             }
+            {!isAuthenticated && (
+              <li className="md:ml-8 text-xl md:my-0 my-7">
+                <div className="text-gray-800 hover:text-gray-400 duration-500 cursor-pointer">
+                  <LoginButton/>
+                </div>
+              </li>
+            )}
+            {isAuthenticated && (
+              <li className="md:ml-8 text-xl md:my-0 my-7">
+                <img class="w-10 h-10 rounded-full" src={user.picture} alt="Avatar" />
+              </li>
+            )}
+            {isAuthenticated && (
+              <li className="md:ml-8 text-xl md:my-0 my-7">
+                <div className="text-gray-800 hover:text-gray-400 duration-500 cursor-pointer">
+                  <LogoutButton />
+                </div>
+              </li>
+            )}
           </ul>
         </div>
       </div>
